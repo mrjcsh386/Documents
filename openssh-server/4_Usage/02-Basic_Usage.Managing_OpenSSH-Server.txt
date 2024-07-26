@@ -1,0 +1,31 @@
+Using systemd utilties to perform basic management of OpenSSH-Server:
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+   Most modern Linux distros will enable, and start OpenSSH Server immediately
+ after the package is installed. So, with that in mind. Review the sshd_config
+ file found under /etc/ssh and continue reading, or just read, or continue, or
+ I don't know, you got this far, just read!
+
+
+Start the ssh server:
+   To start OpenSSH Server, issue the following on a systemd based system:
+
+     # I'm using the 'ssh' alias. 'ssh.service' otherwise!
+     user@host:~$ sudo systemctl start ssh
+
+     # If you've changed configurations mid-flight, reload is your friend.
+     user@host:~$ sudo systemctl reload ssh
+
+     # If you wish to restart ssh after an on disk upgrade, issue:
+     user@host:~$ sudo systemctl restart ssh
+
+     # To enable ssh to start during Linux boot up sequence!
+     user@host:~$ sudo systemctl enable ssh
+
+     # If you have any reason to bring it to a stop, issue:
+     user@host:~$ sudo systemctl stop ssh
+
+     # For when you want to know its current running state
+     user@host:~$ systemctl status ssh
+
+     # To list all logs associated to ssh
+     user@host:~$ journalctl -u ssh

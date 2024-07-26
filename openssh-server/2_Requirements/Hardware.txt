@@ -1,0 +1,49 @@
+Hardware Requirements:
+''''''''''''''''''''''
+   The minimal and recommended hardware requirements for running an OpenSSH
+ server is not explicitly defined by the OpenSSH project, as the requirements
+ largely depend on the specific use case and workload. However, general
+ guidelines can be provided based on typical usage scenarios.
+
+
+Minimal Hardware Requirements:
+   For minimal usage, such as running an OpenSSH server for a few users with
+ light to moderate traffic, the requirements are quite low:
+
+ - CPU: 1 GHz single-core processor
+ - RAM: 256 MB
+ - Storage: 100 MB for OpenSSH and related files, more depending on logs
+   and user data(/home/user et al).
+ - Network: Basic network interfacing.
+
+
+Recommended Hardware Requirements:
+   For a more robust setup, especially in environments with multiple users
+ or higher traffic, the recommended hardware requirements would be higher to
+ ensure smooth performance.
+
+ - CPU: Multi-core processor (e.g., 2 GHz dual core or better)
+ - RAM: 1 GB or more
+ - Storage: 500 MB for OpenSSH and related files, more depending on logs,
+   user data, and other installed applications such as MoSH.
+ - Network: High-speed network interface card with support for gigabit Ethernet
+
+
+Additional Considerations:
+
+ 1. Scalability: If you expect a significant increase in the number of users
+    or the amount of traffic, consider more powerful hardware with additional
+    CPU cores and RAM.
+
+ 2. Security: For enhanced security, especially in enterprise environments,
+    consider dedicated hardware for the OpenSSH server to isolate it from
+    other services.
+
+ 3. Redundancy: Implement RAID for storage redundancy and consider using
+    multiple network interfaces for failover and load balancing.
+
+ 4. Virtualization: If running the OpenSSH server in a virtualized environment,
+    allocate sufficient virtual resources to meet the above requirements.
+
+   These guidelines should help you determine the appropriate hardware for
+ your specific OpenSSH server needs.

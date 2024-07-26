@@ -1,0 +1,11 @@
+About OpenSSH-server:
+'''''''''''''''''''''
+   OpenSSH is a standard and protocol that was started by the BSD crowd. It's
+ intention was to build a remote shell service that held data integrity with
+ encryption across the wire. To inspect SSH connections over the wire, you'll
+ notice that the negotiations, and handshakes it goes through are equivallent
+ to SSL connections. Both use the same algorithms to encrypt traffic. If you're
+ the top to distro hop on the regular, you might've noticed that to install
+ openssh beit for the client, or the server, you'll end up with the same
+ package. Debian stands out by dividing openssh into two packages,
+ openssh-client, and openssh-server respectively.

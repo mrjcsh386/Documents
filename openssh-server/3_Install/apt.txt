@@ -1,0 +1,16 @@
+Debian installation of OpenSSH-server:
+''''''''''''''''''''''''''''''''''''''
+   To install OpenSSH-Server on a Debian-based system, issue the following
+ commands to install:
+
+     # Update package manager cache
+     user@host:~$ sudo apt update
+     # If it warns of any new packages, just upgrade them. Do consider that
+     # you might need to reboot for some of the new upgrades to take affect.
+
+     # Install OpenSSH-Server
+     user@host:~$ sudo apt install -y openssh-server
+
+   Once the package is finished installing, configure '/etc/ssh/sshd_config'
+ as per your local security practices. Examples can be found further into this
+ documentation project.
