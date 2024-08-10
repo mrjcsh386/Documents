@@ -1,0 +1,109 @@
+Making LibreOffice more compatible with Microsoft Office:
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+   As is the case with all software, once you've used it for extended periods
+ of time, you tend to get used to it. If you're making the transition between
+ the Microsoft suite of tools for office work to LibreOffice, or need to support
+ your staff in the transition from the one to the other, here you will find a
+ list of recommendations and steps to implement them.
+
+
+# Ribbon:
+   You might have already noticed a lack of ribbon at the top of LibreOffice
+ coming from a Microsoft Office suite background. Although it isn't perfect,
+ you can get some of that familiarity back by following these steps:
+
+ 1. Starting from the menu bar at the top, find 'view' and select it to 
+    a drop down menu.
+
+ 2. Select the entry 'User Interface'.
+
+ 3. You will be presented with a series of options, the one that best
+    matches the MS Ribbon, is 'Tabbed'.
+
+ 4. After you have applied 'Tabbed', select the 'Main' menu by clicking
+    on the 3 over-lapping bars on the far right top hand corner.
+
+ 5. Once the drop down menu has become visible, click 'Options'.
+
+ 6. In the left hand menu pane, you will see 'View'. Select 'View'.
+
+ 7. Under the 'Theme:' drop down menu, 'Colibre SVG'
+
+ 8.1. If you find the layout not to your liking, you can re-order the
+    placement by opening 'Main' menu(3 over-lapping bars far top right).
+
+ 8.2  Select the entry 'Customize'.
+
+ 8.3  Under the tab 'Notebookbar' you will find a host of features grouped
+    as well as in a (un)selected state by way of radio bars. To re-order or
+    add/remove features, You can select a feature and drag-and-drop the
+    item where ever you choose.
+
+    I leave you here to venture through your customization. If you really
+    want to keep your muscle memory after re-ordering the tabs to fit MS
+    Ribbon layout, you might want to have a look at the 'Keyboard' tab.
+
+
+# Fonts:
+   By default, LibreOffice is not equiped with some of the key fonts that you
+ can find in MS-Word. Here, I will show you how to install those fonts so that
+ you can bet your resume isn't unprintable from MS-Words perspective.
+
+ | Note: Despite LibreOffice having a suite of fonts that are near perfect
+ |   font comparison, there are subtle variations between them that can
+ |   scramble your formatting of your documents when shared between the
+ |   two office families. So, for this, I suggest installing these fonts.
+
+ 1. Open a terminal window, or your choice of GUI package manager and
+    search for the package 'ttf-mscorefonts-installer'. If this package
+    isn't visible, you'll need to enable additional repositories. For my
+    Debian 12 system, I had to enable 'contrib'. Ubuntu, you'll need to
+    enable 'multiverse'.
+
+ Issue the following commands after enabling, or carrying on with the guide:
+
+     user@host:~$ sudo apt update
+     user@host:~$ sudo apt install ttf-mscorefonts-installer
+
+ You might need to accept licensing! If you missed your chance, you can issue
+ the command 'sudo apt install --reinstall ttf-mscorefonts-installer'.
+
+
+# File format and compatibility:
+   Now that we've taken care of the visual elements of compatibility, let's
+ have a look at making the file formating more like MS-Word as a default.
+
+ 1. Select the 'Main' menu icon(3 layer bar far top right).
+
+ 2. Choose 'Options'
+
+ 3. In the left-hand pane, select 'Load/Save' and click on 'Microsoft Office'.
+
+ 4. Make sure all the radio buttons are selected! Most often than not, they are
+    save 'SmartArt to LibreOffice shapes or reverse'. Ensure you enable that
+    feature.
+
+ 5. While we still have the 'Options' box available, select from the left-hand
+    pane, 'LibreOffice Writer' and choose 'Compatibility'.
+
+ 6. Enable these two options:
+    - 'Reorganize Form menu for Microsoft compatibility'
+    - 'Word-compatible trailing blanks'
+
+ 7. In the left-hand pane, once again, select 'Load/Save', and choose 'General'
+
+ 8. Switch the default save as file format to docx by selecting the drop-down
+    menu under 'Default File Format and ODF Settings' labelled as,
+    'Always save as'. Change it to 'Word 2007-365 (*.docx)'.
+
+
+# Templates:
+
+ 1. On the 'File' tab in your new found Ribbon, select 'Templates'
+
+ 2. On the top right-hand side, select the drop down 'Manage'
+
+ 3. Select 'Import'
+
+    Select the type of Template you wish to import, and drill through your
+    filesystem to find your template of choice!
