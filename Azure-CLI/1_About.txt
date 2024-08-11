@@ -1,0 +1,50 @@
+About Azure-CLI:
+''''''''''''''''
+   The Azure Command-Line Interface (Azure CLI) is a powerful tool designed to
+ help developers, administrators, and DevOps engineers manage and interact
+ with Azure resources through a command-line interface.
+
+ 1. Resource Management
+ ''''''''''''''''''''''
+   - Provisioning and Managing Resources: Azure CLI allows you to create,
+     configure, and manage Azure resources such as virtual machines,
+     storage accounts, databases, networks, and more, directly from the
+     command line.
+   - Automation: It can be easily integrated into scripts for automating tasks.
+     This is particularly useful for repetitive tasks, such as deploying
+     instructions, scaling services, and monitoring resources.
+
+ 2. Cross-Platform Functionality
+ '''''''''''''''''''''''''''''''
+   - Host Agnostic: Azure CLI is available on multiple operating systems,
+     including Windows, MacOS, and Linux. This makes it accessible to a
+     wide range of users, regardless of their development environment.
+   - Consistency: It provides a consistent interface across different
+     platforms, allowing users to perform the same work despite their
+     working environment.
+
+ 3. Integration with CI/CD Pipelines
+ '''''''''''''''''''''''''''''''''''
+   - DevOps and CI/CD Deployments: Azure CLI can be integrated into CI/CD
+     pipelines to as a component to automate the deployment of resources
+     for easier testing cycles.
+
+ 4. Scripting and Automation
+ '''''''''''''''''''''''''''
+   - Batch Operations: With some of the tooling available in azure-cli,
+     you can perform multiple actions simultaneous across a pool of
+     resources helping you to avoid the repitition of administration of
+     multiple hosts.
+   - Scripting: Since az is found within your PATH variable, you can use
+     the utility as a component of scripts tailored for your own use case.
+
+ 5. Support for Infrastructure as Code (IaC)
+ '''''''''''''''''''''''''''''''''''''''''''
+   - Template Deployment: Azure CLI can be used to deploy Azure Resource
+     Manager (ARM) templates, enabling you to maintain consistent
+     environments.
+
+ The Azure CLI with its flexibility simplifies the management, automation,
+ and orchestration of Azure resources. Despite its weird learning curve
+ and breadth of sub-functions. This tool is essential to learn when working
+ with Azure cloud services.
