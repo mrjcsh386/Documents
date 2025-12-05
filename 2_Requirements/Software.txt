@@ -1,0 +1,12 @@
+Software requirements for 'pass':
+
+   For the most part, simly installing pass is enough to pull in the
+ software deendencies. However, the actual use of pass requires gpg key pairs
+ to be present, and sharing those keys with pass for the point of encrypting
+ the ensuing files that will be created.
+
+   See 'gpg' for a run down on how to use gpg, or gpg2 for the purposes of this
+ tool. But, the main point that I would like to make, is that you will need a
+ gpg keyring created wit some form of encryption. In my case, I selected RSA and
+ RSA(option #1 during key initializing with gpg). I will go deeper into how to
+ do that specifically in the 'First_Use' usage entry.
