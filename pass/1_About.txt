@@ -1,0 +1,10 @@
+About the 'pass' utility:
+
+   This is a great password manager tool that was designed to be used in a
+ command line driven environment. Designed to do one thing really well, it
+ manages to make use of GnuPG to encrypt its data files. 
+
+   Given the simplicity of the fact that you can create then edit your entries
+ as you see fit by way of text editing, you can enclose notes as granular as
+ your OCD mind would like the information to be. For the most part, we'll just
+ focus on the intended function of keeping our passwords safe. 
