@@ -1,0 +1,57 @@
+The first use of 'pass':
+
+   The tiny UNIX-flavoured dragon named 'pass' is deceptively simple. It looks
+ like a toy, but beneath its minimilist scales is a full GPG-encrypted password
+ tree, versioned with 'git' if you want, script-friendly, comosable, and 
+ joyfully transparent. It's the antithesis of bloated vaults. Let's walk through
+ it in a way that feels natural for daily use while still giving you the full
+ mental model.
+
+ Before anything else: Create a GPG identity
+
+   Since 'pass' encrypts every entry using GPG, you need a GPG keypair. Typical
+ workflow (you probably already know this, but completeness matters):
+
+     user@host:~$ gpg2 --full-generate-key
+
+ | Note: Choose RSA 4096 or Ed25519, give it an email, set a passphrase.
+
+ List keys to confirm:
+
+     user@host:~$ gpg --list-secret-keys --keyid-format LONG
+     /home/user/.gnupg/pubring.kbx
+     -----------------------------
+     sec rsa4096/< Either rsa4096, or ed25519. i.e., DEADF00DBEEFBAAD > ... [SC]
+         < Hex suhmtin >
+     ... < redacted as its boring ...
+
+ Grab the key ID (something like DEADF00DBEEFBAAD)
+
+ Initialize the password store
+ Now greet the dragon:
+
+     user@host:~$ pass init "DEADF00DBEEFBAAD"
+
+ This creates your store at:
+
+     ~/.password-store
+
+ The core intuition: treat secrets like a directory tree
+ You can store secrets like paths:
+
+     user@host:~$ pass insert email/gmail
+     user@host:~$ pass insert servers/web01
+     user@host:~$ pass insert api/stripe
+
+ This makes
+
+     user@host:~$ tree ~/.password-store
+     ~/.password-store
+       ├── email
+       │   └── gmail.gpg
+       ├── servers
+       │   └── web01.gpg
+       └── api
+           └── stripe.gpg
+
+ To generate, and retrieve secrets, see the other entries in this directory.

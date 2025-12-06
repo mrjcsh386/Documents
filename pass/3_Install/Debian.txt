@@ -1,0 +1,23 @@
+Install 'pass' on Debian and Debian variants(mostly)....
+
+   To install pass on Debian, run the following:
+
+     user@host:~$ sudo apt update
+     ...
+     user@host:~$ sudo apt install pass
+
+ The above will install pass with depencies, however if you wish to have
+ pass put entries into your clipboard, you will also need:
+
+     user@host:~$ sudo apt install xclips
+
+ You may have other needs, and will have to adjust the above for your own use
+ case scenario. You may find it interesting that git, qrencode, as well as xclip
+ and wl-clipboard are recommended packages(using; apt-cache depends pass)
+
+   Given the differences between gpg, and gpg2, I will make the recommendation
+ of using gnupg2:
+
+     user@host:~$ sudo apt install gnupg2
+
+ Use of gpg2 will be expanded on later under 'Basic Usage'.
