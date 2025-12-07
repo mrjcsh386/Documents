@@ -1,0 +1,72 @@
+Migrating to new keys, or simply re-keying an established store:
+
+   Here's a walkthrough that paints the whole picture for use-case:
+ 1. You created an RSA key using the less modern of gpg(not gpg2).
+ 2. You used the RSA key to initialize and have populated your pass store
+ 3. You read somewhere that RSA has been undermined(or, you didn't verify your
+    GPG binary, and you wanted an ed25519 key pair instead. This one was me).
+ 4. You wish to 're-home' your store so it trusts the new key pair instead.
+
+ In addition to the above scenario, you may have even dictated during key pair
+ creation an expirary date, and you wish to migrate to the new key before its
+ too late.
+
+ Invoke the GPG binary, in this case, I'm using gpg2
+
+     user@host:~$ gpg2 --expert --full-generate-key
+
+ Choose:
+ - 'ECC and ECC'
+ - Then choose Curve25519
+
+ This yields a signing key using Ed25519 and an encryption subkey using
+ cv25519. GPG2 handles the math; you just enjoy the lighter footprint and
+ stronger crypto.
+
+ List keys again:
+
+     user@host:~$ gpg2 --list-secret-keys --keyid-format LONG
+
+ You'll see something like:
+
+     ...
+     sec    ed25519/DEADF01DBEEFBAAD
+     ...
+
+ Take note of that new key's ID ('DEADF01DBEEFBAAD' in this example)
+
+   Depending on your conditions involved, you may have multiple key stores
+ such as that I made example of in 'Multiple_identities_and_stores', or you
+ may have a single store. I'll show you how to re-encrypt against a single store
+ first, and then follow up with a single store.
+
+ Step 1A: Tell pass to use the new key
+   You re-init the store with the new key ID:
+
+     user@host:~$ pass init "DEADBEEFF01DBAAD"
+
+ This doesn't delete anything. It updates the '.gpg-id' file inside your
+ password store. That file declares the key that 'pass' re-encrypts for.
+
+ Step 2A: Re-encrypt all secrets
+    After you've updated '.gpg-id' with the new key ID, to re-encrypt all
+ secrets with the new key, it's as simple as re-issuing the init of 'pass'
+
+     user@host:~$ pass init "DEADBEEFF01DBAAD"
+
+ Your password store is now re-encrypted with the new key ID.
+
+ Step 1B: Tell your targetted key store to use the new key
+
+     user@host:~$ pass init -p work-store "DEADBEEFF01DBAAD"
+
+ Step 2B: and then repeat the same step again to re-encrypt
+
+     user@host:~$ pass init -p work-store "DEADBEEFF01DBAAD"
+
+ Final Step: Check that everything decrypts cleanly
+
+     pass email/gmail
+
+ GPG2 should prompt you for the keys passphras and output the secret.
+ At this point, the store has moved into the new crypto keys domain.
