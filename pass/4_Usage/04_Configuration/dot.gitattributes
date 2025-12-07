@@ -1,0 +1,18 @@
+# Treat all .gpg files as binary so Git never tries to diff or merge them
+*.gpg binary
+*.gpg -diff
+*.gpg -merge
+
+# Prevent text auto-normalization (no CRLF changes, no whitespace fixes)
+*.gpg -text
+
+# Optional: always use LF endings for metadata files (safe and pleasant)
+#.gpg-id text eol=lf
+#*.id text eol=lf
+
+# Optional but useful: If you're using fancy front-ends, they tend to respect
+#                      drivers more than attributes.
+*.gpg diff=none
+
+# Optional: preserve archived entries as cleanly as possible.
+* -export-ignore

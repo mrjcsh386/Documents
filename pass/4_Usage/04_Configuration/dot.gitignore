@@ -1,0 +1,44 @@
+# Do not ignore any .gpg files. Redundantly necessary, as this is our secrets.
+!*.gpg
+
+# Ignore temporary editor files (vi, vim, nano, emacs, etc.)
+*.swp
+*.swo
+*.swx
+*.tmp
+*~
+.#*
+
+# Ignore MacOS filesystem noise
+.DS_Store
+.AppleDouble
+*.icloud
+
+# Ignore Linux/GNOME/KDE file manager temp files
+.metadata
+.Trash*
+.directory
+
+# Ignore pass-generated cache (rare but possible)
+*.gpg~
+*.bak
+
+# Ignore tarballs and zip files if you manually export/import things
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Ignore compiled or binary blobs that people sometimes stash in pass
+# (Not recommended, but does happen)
+*.bin
+*.exe
+*.o
+*.so
+
+# Ignore log files
+*.log
+
+# Ignore Python virtualenvs or stray tools people occasionall bootstrap
+venv/
+.env/
