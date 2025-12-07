@@ -1,0 +1,60 @@
+Git integration: Optional, but extremely powerful:
+
+ Inside '~/.password-store', run:
+
+     user@host:~$ git init
+     user@host:~$ git add .gitattributes  # An example file is provided
+                                          # under 04_Configurations/
+     user@host:~$ git commit -m "Initialize shared password store"
+
+ Or simpler:
+
+     user@host:~$ pass git init
+
+ What 'pass' itself generates by default, if you run 'pass git init', you'll
+ get just:
+
+     .gitattributes ```
+
+     *.gpg diff=none
+
+     ```
+
+ This is fine, but not robust. Git will still try to treat the files as text
+ and may attempt merges. The expanded version in 04_Configurations/ shields
+ you from future headaches.
+
+ Now every change to your encrypted secrets is versioned. This means:
+
+     user@host:~$ pass git log
+     user@host:~$ pass git status
+     user@host:~$ pass git push
+
+ Because the contents are encrypted, you're safely committing ciphertext.
+
+ If you want to sync acros machines (i.e., via a bare repo or SSH remote):
+
+     user@host:~$ pass git remote add origin github.com-user:user/path-to-repo
+     user@host:~$ pass git -u origin main
+
+ The above assumes you're using ssh, have .ssh/config setup with the contents:
+
+     .ssh/config ```
+
+     ...
+
+     Host github.com-user
+         Hostname github.com
+         User git
+         IdentityFile ~/.ssh/github-user_ed25519
+
+     ...
+
+     ```
+
+ Then on a new machine:
+
+     user@host:~$ gpg --import <your-key>
+     user@host:~$ pass git clone ssh://github.com-user:user/path-to-repo
+
+ Your entire secret tree materializes.
