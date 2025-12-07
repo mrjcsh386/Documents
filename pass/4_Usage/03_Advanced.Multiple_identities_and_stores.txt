@@ -1,0 +1,14 @@
+Multiple identities or multiple stores:
+
+   If you want seperate password trees (i.e., work and personal) with different
+ GPG key pairs, you can follow the steps to create a new GPG key pair, then
+ supliment the 'init' phase using the bellow steps:
+
+     user@host:~$ pass init --path work-store <work-key-id>
+     user@host:~$ pass init --path personal-store <personal-key-id>
+
+ Then use:
+
+     user@host:~$ pass -p work-store email/company
+
+ Your entropy stays nicely compartmentalized.

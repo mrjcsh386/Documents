@@ -7,4 +7,31 @@ About the 'pass' utility:
    Given the simplicity of the fact that you can create then edit your entries
  as you see fit by way of text editing, you can enclose notes as granular as
  your OCD mind would like the information to be. For the most part, we'll just
- focus on the intended function of keeping our passwords safe. 
+ focus on the intended function of keeping our passwords safe.
+
+
+ The behind-the-scenes magic that matters:
+   'pass' uses a simple rule. Encrypt a file using GPG -> store it with the
+ same filename + '.gpg'. The plaintext exists only in memory and ephemeral
+ editor buffers(something to keep in mind, really). Nothing else is happening.
+ No daemon, No database, No special logic. That simplicity is the source of
+ its reliability.
+
+
+ Extending pass: The plugin ecosystem
+   Because it's modular, there's a small ecosystem:
+ - 'pass-otp': time-based one-time passwords
+ - 'pass-import': import from common managers
+ - 'pass-audit': look for weak passwords
+ - 'pass-update': auto-rotate secrets
+ - 'pass-tomb': encrypted container integration
+
+
+ A mental model that keeps things intuitive:
+   Think of 'pass' as a notebook where every page is encrypted with the same
+ padlock, and the notebook is just a folder tree. You can rearrange it, sync
+ it, grep it, version it, and inspect it with plain UNIX tools.
+
+   Once you stop thinking of it as a, "password manager," you start using it
+ like a general-purpose encrypted key-value store. Code snippits, API tokens,
+ config templates, server inventories... Anything textual fits.
