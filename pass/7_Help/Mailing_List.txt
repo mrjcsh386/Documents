@@ -1,0 +1,6 @@
+   The primary place for community discussion and getting help is the official
+ password-store mailing list. You can subscribe to their list. The link that you
+ will find under the "Contributing" header way down at the bottom of their home
+ page https://passwordstore.org, you will see 'join the mailing list' as of
+ December 7th, 2025. Please let me know if you discover this website as down,
+ or it has evolved.

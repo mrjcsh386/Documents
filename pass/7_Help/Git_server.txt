@@ -1,0 +1,2 @@
+   To report bug fixes, suggestions, or contribute to the community. Find
+ yourself at their git page located at https://git.zx2c4.com/password-store/
