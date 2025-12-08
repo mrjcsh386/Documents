@@ -109,6 +109,12 @@ Sharing secrets on a shared system:
  After entering the password twice, he encourages MrJcsh to verify that he can
  read the secret entered into api/stripe.
 
+ MrJcsh, in sharing the same interests and conditions as Grumpy keeps tradition
+ of creating a profile under ~/.local/etc/profile.d/shared-secrets.sh.
+ PASSWORD_STORE_UMASK is optional for MrJcsh, so he doesn't include that line.
+
+ After creating the profile, he imports it and checks for readability:
+
      mrjcsh@host:~$ pass api/stripe
 
  If it succeeds, everything is golden
