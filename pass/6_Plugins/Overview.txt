@@ -1,0 +1,32 @@
+   The 'pass' Unix password manager has a variety of plugins related tools that
+ extend its functionality. These can be categorized into several types:
+
+ 1. Import Tools:
+
+   These plugins facilitate the migration of passwords from other password
+ managers into 'pas'. Examples include:
+
+ - '1password2pass.rb': Imports 1Password data.
+ - 'keepass2pass.py': Imports Keepass2 data.
+ - 'lastpass2pass.rb': Imports Lastpass CSB data.
+ - 'firefox_decrypt': Provides an interface to decrypt Firefox passwords and
+     and export them to 'pass'.
+
+ 2. Functional Enhancements:
+
+   These plugins add new capabilities to 'pass' itself:
+ - 'pass-audit': Audits your password repository for weak or reused passwords.
+ - 'pass-otp': Manages and generates one-time passwords (OTP).
+ - 'pass-update': Assists in updating passwords within your store.
+
+ 3. User Interface and Integration Tools:
+
+   These tools provide alternative interfaces or integrate 'pass' with other
+ aplications:
+ - 'rofi-pass-wayland': A Rofi frontend for 'pass' on Wayland.
+ - 'tmux-pass': A quick password-store browser with preview using
+     'fzf' in 'tmux'.
+ - 'upass': A console UI for 'pass'
+ - 'vim-password-store': Provides Vim-specific features for interacting
+     with 'pass'.
+ - 'XMonad.Prompt.Pass': XMonad prompts for easier password manipulation.
