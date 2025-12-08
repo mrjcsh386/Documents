@@ -1,1 +1,114 @@
 Sharing secrets on a shared system:
+
+   There will be times where secrets need to be shared between users. This
+ document will walk you through sharing secrets between two users, one being
+ able to create/destroy secrets, while the other is only able to read secrets.
+
+   The key factors that are in play here, are UNIX permissions and ownership,
+ GPG public keys, as well as environmental variables that facilitate the use of
+ a shared secret store.
+
+ To set the stage, we'll name the admin 'Grumpy', and the other user MrJcsh.
+ Grumpy will start by creating a directory for the two(perhaps more users in
+ the future. It takes the same steps to add more users, as it does to add one).
+
+ Step 1: Create the directory for the shared password store
+
+     grumpy@host:~$ sudo mkdir -m 0750 /usr/local/share/password-store
+     grumpy@host:~$ sudo chown grumpy:devs -R /usr/local/share/password-store
+
+ Given grumpies lack of desire to provide just one source of entropy in regards
+ to his encryption, he will desire creating a new public key pair for the point
+ of sharing secrets with developers of this particular organization.
+
+     grumpy@host:~$ gpg2 --expert --full-generate-key
+
+ He then selects 'ECC and ECC', gives the prompt a name, email, and a comment.
+ Consider your own expiration needs. I suggest getting into the habbit of
+ rotating your keys on a regular interval.
+
+ Grumpy has a handful of key stores that he keeps, so for the point of this key
+ store, he creates a file under ~/.local/etc/profile.d/shared-keys.sh and
+ includes the following contents:
+
+     ~/.local/etc/profile.d/shared-keys.sh ```
+     # This variable overrides 'pass's encoded default path for stores.
+     export PASSWORD_STORE_DIR="/usr/local/share/password-store"
+     # Remember to chown grumpy:devs -R **/password-store after each new entry.
+     export PASSWORD_STORE_UMASK=027
+     ```
+ Now that the stage has been set, it's time to onboard some lucky soul into the
+ developer nation that will be accessing this shared password-store/.
+
+ Having identified 'mrjcsh' on the system as his intended vict... uh, developer,
+ he encourages mrjcsh to generate a public key pair using gpg2, and to export
+ his newly generated key to be included as a part of the valid keys that can
+ decrypt the secrets within.
+
+ Step 2: Generating a key pair for reading shared secrets
+
+     mrjcsh@host:~$ gpg2 --expert --full-generate-keys
+
+ mrjcsh also selects 'ECC and ECC', as well as curve 25519, gives it an name,
+ email, and a comment. I really want to encourage you again to think deeply
+ about getting used to rotating keys. 
+
+ He now exports only his public key to give to Grumpy:
+
+     mrjcsh@host:~$ gpg2 --armor --export mrjcsh@widgets.inc > mrjcsh.pub
+
+ He passes the 'mrjcsh.pub' file to Grumpy (email, scp, sneaker-net, whatever).
+
+ Step 3: Grumpy imports and trusts MrJcsh's public key
+
+   On the workstation, Grumpy does:
+
+     grumpy@host:~$ gpg2 --import mrjcsh.pub
+
+   After importing the key, in order to encrypt using GnuPGv2, he knows that he
+ has to have 'trust'  in the keys he has been given. Since this is an internal
+ organization, and everyone knows each other in meat space, there is no reason
+ to fret over validating MrJcsh's identity and proceeds with the following:
+
+     grumpy@host:~$ gpg2 --edit-key mrjcsh@widgets.inc
+
+ At the prompt:
+
+     trust
+
+ Choose:
+
+     5 = ultimately
+
+ Don't worry, this does not imply belief about the person. It simply tells GPG:
+ "You are running a shared secrets system, and you are intentionally encrypting
+ to this key."
+
+ Now, grumpy checks his known public keys to find MrJcsh's public key:
+
+     grumpy@host:~$ gpg2 --list-public-keys
+
+ You want to see '[ultimate]' in your case, not '[unknown]'. In this case,
+ Grumpy sees MrJcsh's finger as '[ultimate]' and carries on.
+
+ Step 4: Hand-crafting '.gpg-id' with the required keys for (de)encryption.
+
+     grumpy@host:~$ gpg2 --fingerprint grumpy@widgets.inc
+     grumpy@host:~$ gpg2 --fingerprint mrjcsh@widgets.inc
+
+ Grumpy hand picks the the long formatted hex entries found for both finger-
+ prints, starting with his own
+
+     grumpy@host:~$ echo $GRUMPY_PUB_KEY > $PASSWORD_STORE_DIR/.gpg-id
+     grumpy@host:~$ echo $MRJCSH_PUB_KEY >> $PASSWORD_STORE_DIR/.gpg-id
+
+ Now the stage is set to start encrypting secrets and sharing with others
+
+     grumpy@host:~$ pass insert api/stripe
+
+ After entering the password twice, he encourages MrJcsh to verify that he can
+ read the secret entered into api/stripe.
+
+     mrjcsh@host:~$ pass api/stripe
+
+ If it succeeds, everything is golden
