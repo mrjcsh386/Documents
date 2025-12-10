@@ -1,0 +1,44 @@
+NFTables:
+
+   A packet-filtering and networking-rules framework used on modern Linux
+ systems. It replaces the older iptables/ebtables/arptables/ipsets stacks with
+ a unified ruleset engine and a single command line interface (nft). It 
+ provides more efficient rule evaluation, simpler configuration structures,
+ improved state handling, and a consistent way to define tables, chains, as
+ well as rules.
+
+
+Overview:
+
+   nftables implements firewalling, NAT, packet classification, and traffic
+ manipulation using an internal virtual machine. Rules are compiled into
+ bytecode and evaluated efficiently. All rules live inside 'tables', which
+ contain 'chains', which contain 'rules'. The structure is consistant across
+ IPv4, IPv6, ARP, and bridge filtering.
+
+   The system uses a single configuration syntax stored in text files (usually
+ under /etc/nftables.conf) and a single CLI tool (nft) to load, modify, test,
+ and inspect rulesets.
+
+
+Components:
+
+   Logical containers for firewall logic. Common table families include:
+ - 'inet': handles both IPv4, and IPv6.
+ - 'ip': IPv4 only
+ - 'ip6': IPv6 only
+ - 'arp': arp related filtering and inspection
+ - 'bridge'
+
+ Chains: Ordered sets of rules. A chain has a type (filter, nat, route, etc.)
+ and a hook (prerouting, input, forward, output, postrouting) with an
+ associated priority. These control where in the packet path the chain runs.
+
+ Rules: Individual match/decision statements. Rules match on packet metadata
+ (address, ports, protocols), connection states, interfaces, or sets of values.
+ Rules perform actions: accept, drop, reject, jump, counter, NAT, log, or
+ custom verdicts.
+
+ Sets & Maps: Efficient collections used for matching large lists of addresses
+ or ports without writing repetitive rules. Sets support timeouts, intervals,
+ and dynamism.

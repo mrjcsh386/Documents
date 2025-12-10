@@ -1,0 +1,82 @@
+   NFTables operates as a kernel-level packet filtering engine & requires three
+ basic components:
+
+ 1. A linux kernel with the nftables subsystem enabled.
+ 2. The 'nft' user-space command, which compiles and loads rules.
+ 3. A boot-time loader that applies the ruleset (systemd, init scripts et al).
+
+ Additional functionality such as NAT, connection tracking, and bridge filterin
+ depends on standard kernel modules that are automatically loaded as needed.
+ Legacy iptables tools are not required.
+
+
+The kernel component: The real engine
+
+   NFTables is a kernel subsystem build on top of Netfilter. Netfilter itself
+ is just a set of interrupt points... You know, places in the packet-processing
+ pipline where the kernel says: "I've hit a checkpoint, does anyone want to
+ inspect or change this packet?"
+
+   These checkpoints are the hooks. They live inside the kernel's networking
+ stack and fire no matter what userpace tools you use.
+
+   NFTables supplies the code that attaches logic to these hooks. The logic is
+ stored as a compiled bytecode program. This bytecode runs inside a tiny
+ virtual machine embedded in the kernel.
+
+
+The kernel modules: Feature plugs
+
+   NFTables is modular. It supports many operations, expressions, and state
+ machines. Not all of them are baked into the core.
+
+ When your nftables bytecode references something like:
+ - connection tracking
+ - NAT translations
+ - bridge filtering logic
+ - specific packet metadata
+ - timouts or set types
+ ... the VM loads the corresponding kernel module on demand. These modules
+ provide additional bytecode instructions to the VM. From a low-level
+ perspective, the requirement is this, the kernel must contain (or load) the
+ instruction sets needed by your rules.
+
+   If you reference an instruction set that the kernel doesn't support, the
+ rule can't be loaded because the bytecode would contain unknown operations.
+
+
+The userspace component: A compiler and a loader:
+
+   The kernel does not read nft syntax. It only understands the bytecode. The
+ job of /usr/sbin/nft is to:
+
+ - parse human-readable nft syntax
+ - compile that syntax into bytecode
+ - send the bytecode to the kernel using netlink messages
+ - ask the kernel to attach the code to a specific hook
+
+ So, the low-level userspace requirement is simply a program capable of
+ generating and sending nftables bytecode. Right now, that program is the
+ 'nft' command. Systemd units like 'nftables.service' are just wrappers around
+ the same command.
+
+
+The ruleset loader: a bootstrap mechanism
+
+   The kernel does not remember your rules across reboots. Nothing about
+ nftables is persistent unless userspace resubmits the bytecode.
+
+ So, at a glance, this can be:
+ - a systemd service
+ - your own script
+
+
+Bringing it all together cleanly:
+
+   NFTables requires a Linux kernel that contains the Netfilter hook oints and
+ nftables bytecode interpreter. It also requires the 'nft' userspace tool to
+ compile nft syntax into bytecode and load that bytecode into the kernel. The
+ kernel must include the modules that implement any instruction sets referenced
+ by the rules. Because the kernel does not persist rules, a userspace program
+ must reload the ruleset at boot. Nothing else is strictly required for nftables
+ to operate.
