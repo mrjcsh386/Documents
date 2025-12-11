@@ -1,0 +1,30 @@
+What Debian (or similar) installation of nftables requires:
+
+ - The main package + its dependencies
+   - On debian, the core package is simply 'nftables'. That provides the
+     command-line tool 'nft', and the user-space API library(libnftables1).
+   - Installing "nftables" typically also pulls in its required runtime depend-
+     encies (C standard library, etc), so you just need to apt-install that
+     package.
+   - For example, many guides say that to get started you run:
+
+     user@host:~$ sudo apt install nftables
+
+     and then enable its service so rules get applied at boot. That last detail
+     most certainly includes creating, and placing a /etc/nftables.conf file
+     to initiate the use of a custom firewall.
+   - Because Debian (since version 10 "Buster") uses nftables as its default
+     firewall framework, you can usually expect it to be present right out of
+     the gate. According to Debian's package metadata, kernel version > 3.13 is
+     required; most modern distrobutions (and Debian stable) provide newer
+     kernels, with > 4.14 recommended.
+
+ - Kernel requirements / kernel-side support
+   - If you build from source or run a custom kernel, you must ensure that the
+     kernel configuration includes support for 'nf_tables' (and relevant
+     modules required for your use-case). With some digging, you  should  be
+     able to track down a guide on building from source for nftables that shows
+     the inclusion of the other supporting modules such as nf_tables_ipv4, etc.
+   - Distrobution kernel packages (default for Debian) generally already
+     include nftables support, so most users don't have to manager kernel
+     modules.
