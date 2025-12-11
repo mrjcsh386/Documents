@@ -1,0 +1,133 @@
+#! /usr/sbin/nft -f
+
+# Sources:
+#@ https://wiki.gentoo.org/wiki/Nftables#Modular_Ruleset_Management
+#@ https://wiki.archlinux.org/title/Nftables
+#& ChatGPT-5.1
+
+flush ruleset
+
+table netdev filter {
+    # Basic filter chain, devices can be configured to jump here
+    chain ingress_filter {
+        # Drop all fragments.
+	ip frag-off & 0x1fff != 0 drop
+
+        # Drop XMAS packets.
+	tcp flags & (fin|syn|rst|psh|ack|urg) == fin|syn|rst|psh|ack|urg drop
+
+        # Drop NULL packets.
+	tcp flags & (fin|syn|rst|psh|ack|urg) == 0x0 drop
+
+        # Drop uncommon MSS values.
+	tcp flags syn tcp option maxseg size 1-535 drop
+
+    }
+
+}
+
+table inet filter {
+    set scanners {
+        type addr
+        flags dynamic
+        timeout 1h
+    }
+
+    chain input {
+        type filter hook input priority 200 ; policy drop ;
+        jump base_filter
+        jump input_hook
+        log prefix "Dropped input traffic: " drop
+
+    }
+
+    chain input_tcp {
+        ip saddr @scanners reject with tcp reset
+        ip6 saddr @scanners reject with tcp reset
+
+        jump tcp_hook
+
+        add @scanners { ip saddr }
+        add @scanners { ip6 saddr }
+        reject with tcp reset
+    }
+    chain input_udp {
+        ip saddr @scanners reject with icmp type port-unreachable
+        ip6 saddr @scanners reject with icmpv6 type port-unreachable
+
+        jump udp_hook
+
+        add @scanners { ip saddr }
+        add @scanners { ip6 saddr }
+        reject with icmp type port-unreachable
+    }
+
+    chain tcp_hook {
+    }
+    chain udp_hook {
+    }
+
+    chain base_filter {
+        jump drop_filter
+        ct state vmap {
+            # TODO: research 'related' and generate more restrictive rules.
+            established: accept,
+            related: accept,
+            new: continue,
+            invalid: drop
+
+        }
+        # Allow loopback traffic
+	iif lo accept
+        oif lo accept
+
+    }
+
+    chain input_hook {
+        tcp flags & (fin|syn|rst|ack) == syn ct state new jump input_tcp
+        udp ct state new jump input_udp
+    }
+
+    chain drop_filter {
+    }
+
+    chain forward {
+        type filter hook forward priority 200 ; policy drop ;
+        jump base_filter
+        jump forward_hook
+        log prefix "Dropped forwarded traffic: " drop
+
+    }
+
+    chain forward_hook {
+    }
+
+    chain output {
+        type filter hook output priority 200 ; policy drop ;
+        jump base_filter
+        jump output_hook
+        log prefix "Dropped output traffic: " drop
+
+    }
+
+    chain output_tcp {
+    }
+    chain output_udp {
+    }
+
+    chain output_hook {
+    }
+
+}
+
+table inet nat {
+    chain prerouting {
+        type nat hook prerouting priority 0 ;
+    }
+    chain postrouting {
+        type nat hook postrouting priority 500 ;
+    }
+
+}
+
+include "/etc/nftables.rules.d/*.rules"
