@@ -1,0 +1,8 @@
+First use of NFTables:
+
+   The first use scenario for 'nft' is nothing more than simply checking to see
+ if everything is in $PATH, and that the modules are available. 
+
+     user@host:~$ sudo nft --versioin
+
+ If it returns a value, you're set and ready to start configuring your firewall.
