@@ -1,0 +1,30 @@
+About npm:
+
+   npm (Node Package Manager) is the default package manager for the Node.js
+ Javascript runtime. It provides a structured system for managing packages-
+ reusable libraries, frameworks, and command-line utilties that can be installed
+ locally or globally.
+
+
+Key Features:
+ - Package Installation: Installs packages from the npm repository to a
+   project directory or system-wide.
+ - Dependency Management: Automatically handles dependencies of installed
+   packages, ensuring all required components are present.
+ - Version Control: Allows specifying exact versions or version ranges,
+   maintaining reproducibility across environments.
+ - Registry Access: Interfaces with the npm public registry, providing
+   search, publication, and update capabilities for packages.
+
+
+File Structure:
+ - 'package.json': The manifest file containing metadata, dependencies,
+     and scripts for a project.
+ - 'package-lock.json': Locks exact versions of dependencies to
+     maintain consistency.
+ - 'node_modules/': Directory where installed packages are stored locally.
+
+
+   npm provides both a command-line interface('npm') and programmatic access
+ through Node.js, making it a central tool for JavaScript development,
+ dependency management, and project reproducibility.
