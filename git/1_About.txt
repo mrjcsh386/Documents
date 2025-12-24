@@ -1,0 +1,31 @@
+About 'git':
+
+   This document branch contains references to and usage of Git, a distributed
+ version control system used to track changes in files and coordinate work
+ across one or more repositories.
+
+   Git is often discussed with strong opinions regarding workflows, branching
+ strategies, and preferred usage patterns. This document branch does not treat
+ any single methodology as authoritative. Instead, Git is approached as a tech-
+ nical system with defined behaviors, constraints, and trade-offs that can be
+ reasoned about and applied deliberately.
+
+   My interest in Git is focused on understanding its commits, objects, 
+ references, and maybe some history and not relying on prescribed conventions or
+ tooling abstractions. Workflows used here are chosen for clarity,
+ reproducibility, and suitability to the problem at hand, not for conformity.
+
+   This document branch on Git does not attempt to resolve debates around Git
+ usage, governance, or ecosystem politics. Git is treated as infrastructure and
+ as a mechanism for recording change and enabling controlled evolution of work
+ over the paassage of time.
+
+   A large part of Git, is its flexibility. Branching methods gives rise to a
+ fair bit of debate, and a fair bit more confusion on beaurocratic methods of
+ maintaining how things should be done. It's easy to forget that branching isn't
+ deliberately designed to be authoritative on its own rite. it could be more
+ easily handled and understood if one treats it more specifically as a naming
+ method, not a convention. Where things get restrictive on the subject, is
+ but simply how the repo owner decides it to be. Sure, there are norms. But,
+ they are only as deep as the community that works on a particular repo makes
+ them out to be.
