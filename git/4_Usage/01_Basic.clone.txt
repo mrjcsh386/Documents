@@ -1,0 +1,14 @@
+Summary:
+   Clones an existing repository into a new directory. The repository URL can
+ be local or remote (SSH/HTTP).
+
+ Example:
+ 
+     user@host:~$ git clone https://github.com/user/repo.git
+     Cloning into 'repo'...
+     remote: Counting objects: 100% (50/50), done.
+     Receiving objects: 100% (50/50), 12.34 KiB | 3.08 MiB/s, done.
+
+ Use cases:
+ - Download a remote repository for development
+ - Duplicate a local repository for experimentation

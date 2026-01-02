@@ -1,0 +1,13 @@
+Summary:
+
+   Initializes a new Git repository in the current directory or reinitializes
+ an existing one. This is typically the first command run in a new project.
+
+ Example:
+ 
+     user@host:~$ git init my_project
+     Initialized empty Git repository in /home/user/my_project/.git/
+
+ Use cases:
+ - Start version control in a new project directory
+ - Reinitialize a repository to fix missing .git metadata

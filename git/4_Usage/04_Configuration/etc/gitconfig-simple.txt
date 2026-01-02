@@ -1,0 +1,32 @@
+; This is an example system-wide Git configuration file (/etc/gitconfig)
+; Settings in this file apply to all users and all repositories on the system.
+; Comments start with a semicolon or hash.
+
+[user]
+    ; Default user name for commits (can be overridden by global or local config)
+    name = Syster Sally
+    ; Default email address for commits (can be overridden)
+    email = system@example.com
+
+[core]
+    ; Sets the default text editor for Git operations (e.g., commit messages)
+    ; The '--wait' flag is common for GUI editors to wait for the file to be closed
+    editor = nano -w
+    ; Don't trust file modes, useful for Windows/macOS where file permissions might be inconsistent
+    filemode = false
+
+[init]
+    ; Sets the default name for the initial branch when creating new repositories
+    defaultBranch = main
+
+[color]
+    ; Enables helpful colorization in Git output by default
+    ui = auto
+
+[alias]
+    ; Example aliases for common Git commands
+    st = status
+    co = checkout
+    ci = commit
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short

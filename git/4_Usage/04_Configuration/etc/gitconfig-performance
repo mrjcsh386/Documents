@@ -1,0 +1,73 @@
+[core]
+    # Performance: Enable the built-in file system monitor to speed up 'git status'
+    # on repositories with hundreds of thousands of files.
+    fsmonitor = true
+    # Use 'untrackedCache' to speed up commands by avoiding rescanning untracked files.
+    untrackedCache = true
+    # Standardize line endings for a cross-platform contributor base.
+    autocrlf = input
+
+[feature]
+    # Enable manyFiles to optimize Git's internal data structures for high file counts.
+    manyFiles = true
+
+[gc]
+    # Ensure background maintenance is running to keep the repo optimized.
+    auto = 256
+    worktreeGarbageCycle = 24h
+
+[index]
+    # Enable version 4 of the index format, which uses path compression to save disk space.
+    version = 4
+
+[status]
+    # Use 'submoduleSummary' to help contributors track changes in nested dependencies.
+    submoduleSummary = true
+
+[fetch]
+    # Performance: Use 'parallel' to speed up fetching from multiple remotes.
+    parallel = 0
+    # Housekeeping: Automatically prune stale remote-tracking branches during fetch.
+    prune = true
+    # Security: Ensure all fetched objects are valid to prevent repo corruption.
+    fsckObjects = true
+
+[pull]
+    # Enforce rebase for all users to prevent "merge bubbles" in shared history.
+    rebase = true
+    # Automatically stash local work before pulling to avoid merge conflicts.
+    autostash = true
+
+[rebase]
+    # Automatically handle fixup!/squash! commits to encourage clean PRs.
+    autoSquash = true
+    # Preserve original metadata (like committer date) when rebasing.
+    instructionFormat = "(%an <%ae>) %s"
+
+[merge]
+    # Use 'zdiff3' for conflict markers that show the original base, aiding complex resolutions.
+    conflictstyle = zdiff3
+    # Enable 'rerere' (reuse recorded resolution) to automatically resolve repeated conflicts.
+    enabled = true
+
+[push]
+    # Prevent accidental pushes to the wrong branch; only push the current branch.
+    default = current
+    # Security: Force-with-lease prevents overwriting someone else's work unintentionally.
+    useForceIfIncludes = true
+
+[init]
+    # Universal branch naming to prevent confusion across the organization.
+    defaultBranch = main
+
+[commit]
+    # Ensure commit messages are informative by showing the diff during editing.
+    verbose = true
+    # Security: Enforce GPG signing for all commits to verify contributor identity.
+    gpgSign = true
+
+[pack]
+    # Performance: Optimize memory usage for large packfiles.
+    windowMemory = 2g
+    packSizeLimit = 2g
+    threads = 0 # Auto-detect CPU cores for compression.

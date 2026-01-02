@@ -1,0 +1,17 @@
+   Git supports a wide variety of plugins and extensions. They can be
+ installed as standalone binaries or via package managers, and used
+ to extend Git functionality.
+
+ Top plugins overview:
+ - git-lfs: Large file support
+ - git-flow: Branching model automation
+ - git-extras: Additional commands
+ - git-gui: GUI interface
+ - git-svn: Subversion interoperability
+ - git-annex: Large data management
+ - git-imerge: Incremental merging
+ - git-crypt: Encryption support
+ - git-town: Workflow automation
+
+   Plugin installation instructions are available in their respective man
+ pages or online documentation.

@@ -1,0 +1,11 @@
+Summary:
+
+   Uses '/usr/bin/diff' like behaviour against two
+ listed branches.
+
+ Example: TODO: Generate demonstratable output.
+
+ Use cases:
+ - Verify between two branches pre- and post-merge to
+   ensure success, or verify differences without
+   intending a merge.

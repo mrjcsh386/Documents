@@ -1,0 +1,4 @@
+To install 'git' on Debian and variants, issue:
+
+     user@host:~$ sudo apt update
+     user@host:~$ sudo apt install git

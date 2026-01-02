@@ -1,0 +1,69 @@
+[user]
+    name = Your Name
+    email = your.email@example.com
+
+[core]
+    # The absolute standard for the Vim enthusiast
+    editor = vim
+    # Enable the file system monitor for near-instant status on large repos
+    fsmonitor = true
+    # Use 'diff-highlight' (part of the Git contrib) or 'delta' for intra-line colors
+    pager = less -F -X
+
+[color]
+    # High-visibility colors for an old hand who needs to spot changes fast
+    ui = always
+    [color "diff"]
+        meta = yellow bold
+        frag = cyan bold
+        old = red bold
+        new = green bold
+        commit = yellow
+        whitespace = red reverse
+    [color "status"]
+        added = green
+        changed = yellow
+        untracked = cyan
+
+[alias]
+    # --- LOG SPLUNKING ---
+    # 'l': The master view. Graph, colors, relative dates, and branch decorators.
+    l = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    # 'll': Detailed log with file statistics
+    ll = log --stat --oneline --graph
+    # 'search': Find which commit introduced a specific string (the pickaxe)
+    search = log -S
+    
+    # --- BISECT WORKFLOW ---
+    # Fast-tracking the 'old hand' through bug hunts
+    bs-start = bisect start
+    bs-good  = bisect good
+    bs-bad   = bisect bad
+    bs-reset = bisect reset
+    # Run a test script automatically to find the breaking commit
+    bs-auto  = bisect run ./test-script.sh
+
+    # --- EFFICIENCY ---
+    st = status -sb
+    co = checkout
+    br = branch -v
+    unstage = reset HEAD --
+    # Quickly fix the previous commit without re-typing the message
+    amend = commit --amend --no-edit
+
+[diff]
+    # Use the histogram algorithm for more logical diffs in complex code
+    algorithm = histogram
+    # Highlight code that was moved, not just deleted/added
+    colorMoved = zebra
+    # Declare /usr/bin/diff as the external engine
+    external = /usr/bin/diff
+
+[merge]
+    # Shows the common ancestor in conflicts, vital for complex merges
+    conflictstyle = zdiff3
+
+[bisect]
+    # Standardize on terms for non-binary bug hunts (e.g., 'fixed' vs 'broken')
+    defaultTermGood = fixed
+    defaultTermBad = broken

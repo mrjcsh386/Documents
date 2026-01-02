@@ -1,0 +1,77 @@
+[user]
+    # Use system-wide defaults, but let users override in their local ~/.gitconfig
+    name = System Administrator
+    email = admin@yourcompany.com
+
+[core]
+    # Use modern diff tools like 'delta' for beautiful terminal output
+    pager = delta
+    editor = vim
+    autocrlf = input
+    # Speed up status on large repos by ignoring untracked files in submodules
+    ignoreSubmodules = dirty
+
+[interactive]
+    # Enhances the interactive staging experience with color
+    diffFilter = delta --color-only
+
+[delta]
+    # Configuration for the 'delta' tool (must be installed separately)
+    navigate = true    # use n/N to move between diff sections
+    light = false      # set to true if using a light terminal theme
+    line-numbers = true
+
+[init]
+    defaultBranch = main
+
+[alias]
+    # --- VISUALIZATION FLOURISH ---
+    # A beautiful, color-coded, one-line graph of history
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold cyan)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    
+    # --- PRODUCTIVITY FLOURISH ---
+    # Snapshot: Save everything currently in the working tree as a temporary commit
+    snapshot = !git add -A && git commit -m "Snapshot: $(date)"
+    
+    # Undo: Roll back the last commit but keep the changes in the staging area
+    undo = reset --soft HEAD~1
+    
+    # Cleanup: Prune remote-tracking branches that no longer exist on the remote
+    up = !git fetch --prune && git pull --rebase
+    
+    # --- SHELL INTEGRATION ---
+    # Find a file in the repository by name (case-insensitive)
+    f = "!git ls-files | grep -i"
+
+[pull]
+    # Enforce rebase instead of merge to keep history linear and clean
+    rebase = true
+    autostash = true # Automatically stash changes before pulling and pop after
+
+[rebase]
+    # Automatically stash/unstash during rebase operations
+    autoStash = true
+    # For interactive rebases, automatically detect fixup! and squash! commits
+    autoSquash = true
+
+[merge]
+    # Use 'zdiff3' for more readable conflict markers that show the common ancestor
+    conflictstyle = zdiff3
+
+[diff]
+    # Use the histogram algorithm for more accurate/readable diffs
+    algorithm = histogram
+    # Better detection of moved or renamed files
+    colorMoved = plain
+
+[help]
+    # Automatically correct mistyped commands (e.g., 'git statsu') after 1 second
+    autocorrect = 10
+
+[includeIf "gitdir:~/work/"]
+    # Flourish: Automatically use work email for anything in the /work folder
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/personal/"]
+    # Flourish: Automatically use personal email for personal projects
+    path = ~/.gitconfig-personal
