@@ -1,0 +1,1 @@
+Because Linux is so modular, you can slot in one of the many different shells for use, although most of them are derived from the original Bourne shell. On Linux, the standard shell that is always installed as `/bin/sh` is called *bash* (the GNU Bourne-Again SHell), You will find this file installed by every major flavor of Linux.
