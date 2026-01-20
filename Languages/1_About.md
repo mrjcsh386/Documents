@@ -1,71 +1,134 @@
-## About the 'Languages' branch of documents:
-To provide instructions to a computer, you first have to have a shared language that shares properties with your intended results. It should also have capabilities that support what you're trying to do, as well as make it easier to figure out what's going on.
-
-## What to expect
-It's an best effort to layout a directory structure that operates with respect to shared traits between languages. Not all languages have control flow, such html or markdown. However, they do have annotation, and abstraction. This by no means should serve as a guide on how to do things. It should be treated as reference material. Basic examples, and terse verbiage will be used much as man pages, more granular. **You** should not expect tutorials, or guide work here. This is designed from the ground up to be referential material and either have an idea of what you're doing, or already have a guide on using a language already.
-
+# Purpose
 ---
+This repository is a reference-oriented map of programming and markup languages. It focuses on shared conceptual traits across languages rather than providing tutorials or step-by-step guides. Its goal is to help you understand how systems assert rules, organize data, and produce outcomes.
 
-## Synopsis:
+**Who this is for:**
+- Me (10 months from now): Use this as a scaffold for recalling rules, patterns, and reasoning about languages.
+- You: This is reference material only. Examples are terse and structured like man pages; it is not a tutorial.
 
-├── 1_About.md
-├── 2_Environment
-├── 3_Deployment
-├── 4_Assertions
-│   ├── 01_Names_And_Identity
-│   ├── 02_Values_and_Types
-│   ├── 03_Structure_and_Scope
-│   ├── 04_Control_and_Flow
-│   ├── 05_Conditions_and_Decisions
-│   ├── 06_Algorithms
-│   ├── 07_IO_sockets_and_pipes
-│   ├── 08_Exit_Codes
-│   ├── 09_Abstraction_and_ReUse
-│   └── 10_Metadata_and_Annotation
-├── 5_Errors
-├── 6_Debugging
-└── 7_Help
-    └── Cheat-Sheet
-
+## How to read this repository
 ---
+Folders represent modes of reasoning, not language syntax.
 
-### 1_About.txt:
-This document, in the flesh!
+Files contain language-specific realizations of those concepts.
 
-### 2_Environment/:
-Before you try anything here, here's what needs to be installed, running, or configured. Some examples, such as C require a compiler, where as html et al require a web-browser. Please, remember these are not solutions to help you create server class environments. The information found here is to help you digest the language in and of themselves.
+Cross-links inside files indicate connections between multiple folders. A feature may belong conceptually to several axes but only “lives” in one folder.
 
-### 3_Deployment/:
-Basic step-by-step instructions for making use of each language. To compile *this* language, interpret *that* language within their own contexts.
+Reading order is flexible: pick a concept of interest and explore examples; sequential reading is optional.
 
-### 4_Assertions/:
-This is where you will find the system's rules, behaviors, and structures are explained.
-- **01_Names_and_Identity/:**
-  Every named thing lives here: variables, IDs, selectors, headings. "What exists and how we distinguish it."
-- **02_Values_and_Types/:**
-  Constants, literals, types, and bindings, "What can a thing hold and what kinds of things exist?"
-- **03_Structure_and_Scope/:**
-  Nesting, block organization, visibility rules. "How things are organized and where they are valid."
-- **04_Control_and_Flow/:**
-  Loops, statements, execution paths. "How a system decides what happens next."
-- **05_Conditions_and_Decisions/:**
-  Boolean logic, conditionals, branching. "How the system chooses between options."
-- **06_Algorithms/:**
-  Step-by-step procedures and patterns of reasoning. "How complex actions are broken into repeatable steps."
-- **07_IO_sockets_and_pipes/:**
-  Input/Output operations, including files, networks, streams. "Where systems interact with the outside world."
-- **08_Exit_Codes/:**
-  Reference material to assist in debugging, or boolean operation for control flow, etc.
-- **09_Abstraction_and_ReUse/:**
-  Functions, modules, templates, macros. "How we reduce repetition and reuse concepts."
-- **10_Metadata_and_Annotation/:**
-  Comments, documentation, attributes, IDs, front matter. "Information about the information."
+## Repository Synopsis
+>├── 1_About.md
+>├── 2_Environment
+>├── 3_Deployment
+>├── 4_Assertions
+>│   ├── 01_Names_and_Identity
+>│   ├── 02_Values_and_Types
+>│   ├── 03_Structure_and_Scope
+>│   ├── 04_Control_and_Flow
+>│   ├── 05_Conditions_and_Decisions
+>│   ├── 06_Algorithms
+>│   ├── 07_IO_sockets_and_pipes
+>│   ├── 08_Exit_Codes
+>│   ├── 09_Abstraction_and_Reuse
+>│   └── 10_Metadata_and_Annotation
+>├── 5_Errors
+>├── 6_Debugging
+>└── 7_Help
+ >   └── Cheat-Sheet
 
-### 5_Errors/:
-Here is how the system can break and what those signals mean.
+## Folder Descriptions
+---
+### 1_About.md
 
-### 6_Debugging/:
-Here's how to investigate problems, what tools to use, and how to think about them.
+The purpose and philosophy of this repository, including reading guidance, scope, and conventions.
 
-### 7_Help/:
-Lists of online resources so that you can find help from someone you're willing to trust. You should also find cheat-sheets with 0 fluff!
+### 2_Environment/
+
+Before using any material here, ensure your system meets the requirements. Examples:
+
+C requires a compiler
+
+HTML/Markdown require a web browser
+
+Future you: Remember environment assumptions when revisiting examples.
+New user: Understand what needs to be installed or running; this is context, not a setup tutorial.
+
+### 3_Deployment/
+
+Step-by-step instructions for making language examples functional in their own context.
+
+Future you: Quick reference for compiling or interpreting code.
+New user: How to execute or test examples safely.
+
+### 4_Assertions/
+
+The core of the repository: language rules, behaviors, and structures, organized by conceptual mode of reasoning. Files are language-specific; cross-links indicate connections between concepts.
+
+**1_Names_and_Identity/**
+Every named entity: variables, IDs, selectors, headings.
+Concept: “What exists and how we distinguish it.”
+
+**02_Values_and_Types/**
+Constants, literals, types, and bindings.
+Concept: “What can a thing hold, and what kinds of things exist?”
+
+**03_Structure_and_Scope/**
+Nesting, block organization, visibility rules.
+Concept: “How things are organized and where they are valid.”
+
+**04_Control_and_Flow/**
+Loops, statements, execution paths.
+Concept: “How a system decides what happens next.”
+
+**05_Conditions_and_Decisions/**
+Boolean logic, conditional branches.
+Concept: “How the system chooses between options.”
+
+**06_Algorithms/**
+Step-by-step procedures, patterns of reasoning, reusable sequences.
+Concept: “How complex actions are broken into repeatable steps.”
+
+**07_IO_sockets_and_pipes/**
+Input/output operations: files, network streams, or pipes.
+Concept: “Where systems interact with the outside world.”
+
+**08_Exit_Codes/**
+Status codes and program termination signals.
+Concept: “How a program signals success, failure, or control decisions.”
+
+**09_Abstraction_and_Reuse/**
+Functions, modules, templates, macros.
+Concept: “How we reduce repetition and reuse concepts.”
+
+**10_Metadata_and_Annotation/**
+Comments, documentation, attributes, IDs, front matter.
+Concept: “Information about the information.”
+
+### 5_Errors/
+
+Expected failures, traps, and exceptions.
+
+Future you: Quick reference to what can go wrong.
+New user: Understand the meaning of error signals and failures.
+
+### 6_Debugging/
+
+Techniques and tools for investigating problems.
+
+Future you: Where to store reasoning and strategies for diagnosing issues.
+New user: How to inspect failures and trace behavior.
+
+### 7_Help/
+
+Human-facing shortcuts: online resources, cheat sheets, and quick references.
+
+Future me: Rapid recall of key commands or patterns.
+You: Trusted sources for further guidance.
+
+### Notes
+---
+Each folder is a conceptual axis, not a syntactic category.
+
+Features may span multiple axes; use backlinks for connections rather than folder proliferation.
+
+This repository is referential—expect terse examples and minimal explanation.
