@@ -50,15 +50,15 @@ C requires a compiler
 
 HTML/Markdown require a web browser
 
-Future you: Remember environment assumptions when revisiting examples.
-New user: Understand what needs to be installed or running; this is context, not a setup tutorial.
+Future me: Remember environment assumptions when revisiting examples.
+You: Understand what needs to be installed or running; this is context, not a setup tutorial.
 
 ### 3_Deployment/
 
 Step-by-step instructions for making language examples functional in their own context.
 
-Future you: Quick reference for compiling or interpreting code.
-New user: How to execute or test examples safely.
+Future me: Quick reference for compiling or interpreting code.
+You: How to execute or test examples safely.
 
 ### 4_Assertions/
 
@@ -108,15 +108,15 @@ Concept: “Information about the information.”
 
 Expected failures, traps, and exceptions.
 
-Future you: Quick reference to what can go wrong.
-New user: Understand the meaning of error signals and failures.
+Future me: Quick reference to what can go wrong.
+You: Understand the meaning of error signals and failures.
 
 ### 6_Debugging/
 
 Techniques and tools for investigating problems.
 
-Future you: Where to store reasoning and strategies for diagnosing issues.
-New user: How to inspect failures and trace behavior.
+Future me: Where to store reasoning and strategies for diagnosing issues.
+You: How to inspect failures and trace behavior.
 
 ### 7_Help/
 
