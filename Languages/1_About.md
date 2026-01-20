@@ -64,7 +64,7 @@ You: How to execute or test examples safely.
 
 The core of the repository: language rules, behaviors, and structures, organized by conceptual mode of reasoning. Files are language-specific; cross-links indicate connections between concepts.
 
-**1_Names_and_Identity/**
+**01_Names_and_Identity/**
 Every named entity: variables, IDs, selectors, headings.
 Concept: “What exists and how we distinguish it.”
 
