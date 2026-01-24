@@ -30,7 +30,7 @@
  user@host:~$ git config --global core.editor 'vi'
  # Replace editor for your choice
 
- # Configure for a global '.gitignore' kept in your home directory
+ # Configure for a global '.gitignore' kept in your home directory.
  git config --global core.excludesfile '~/.gitignore_global'
  ```
 
@@ -43,13 +43,17 @@
  # For Linux, BSD, Unix, or Apple products, enter:
  user@host:~$ git config --global core.autocrlf input
 
- # For microsoft products, enter:
+ # For Microsoft products, enter:
  bash$ git config --global core.autocrlf true
-
- # A more weildy alias for 'log'
+ ```
+ ```bash
+ # A more widely used alias for 'log':
  user@host:~$ git config --global alias.lg "log --oneline --graph \
   --decorate --all"
  ```
 
 > Notes: For a first time user of `git`, you'll start to notice `--global`,
-> `--local`, and `--system`. `--system` affects /etc/
+> `--local`, and `--system`. `--system` affects /etc/gitconfig, `--global`
+> affects ~/.git/config, as `--local` affects te repository you are currently
+> working on. So, if you're using a different identity for a particular repo,
+> use `--local` for *that* repository.

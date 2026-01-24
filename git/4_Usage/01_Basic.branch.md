@@ -25,7 +25,6 @@
    This creates a new branch taking the state of the current working branch
  withouth switching to it.
 
- ## Use cases:
  ### Deleting a branch
    ```bash
      # To delete a branch.
@@ -42,7 +41,11 @@
    ```bash
    user@host:~$ git branch -m dev/user0 dev/luser0
    ```
- ### Comparing local branches without switching
+ ### Enumerating where commits end up.
+ Some archilogical digs you are going to undergo, you'll benefit from being able
+ locate where commits get stitched into the repositories internal map of reality
  ```bash
  user@host:~$ git branch --contains <commit hash>
  ```
+
+ ## Use cases:
