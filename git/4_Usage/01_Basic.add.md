@@ -22,6 +22,7 @@
  - You can run `git add` multiple times before a commit. Each run updates the
    staging area to reflect your intent at that moment.
  - `git add` does not record history. It prepares history.
+ - `git add` operates within the context of the current `branch`
 
  Mentally, think of it like a librarians cart. Files on your desk are messy
  reality. The cart holds only the books you've decided belong in the next
