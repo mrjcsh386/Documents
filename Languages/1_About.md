@@ -30,7 +30,8 @@ Reading order is flexible: pick a concept of interest and explore examples; sequ
 >│   ├── 07_IO_sockets_and_pipes
 >│   ├── 08_Exit_Codes
 >│   ├── 09_Abstraction_and_Reuse
->│   └── 10_Metadata_and_Annotation
+>│   ├── 10_Metadata_and_Annotation
+>│   └── 11_Inspection_and_Discovery
 >├── 5_Errors
 >├── 6_Debugging
 >└── 7_Help
@@ -103,6 +104,10 @@ Concept: “How we reduce repetition and reuse concepts.”
 **10_Metadata_and_Annotation/**
 Comments, documentation, attributes, IDs, front matter.
 Concept: “Information about the information.”
+
+**11_Inspection_and_Discovery/**
+What code is already available? What problems are already solved?
+Concept: "How do I know if the goal is already accomplished?"
 
 ### 5_Errors/
 
