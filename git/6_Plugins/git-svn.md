@@ -1,7 +1,7 @@
-Summary:
+ ## Summary:
    Enables bidirectional operation between a Subversion repository and Git.
 
- Use case:
+ ## Use case:
  - Collaborate with SVN users while using Git locally
 
- Source: https://git-scm.com/docs/git-svn
+ **Source**: https://git-scm.com/docs/git-svn

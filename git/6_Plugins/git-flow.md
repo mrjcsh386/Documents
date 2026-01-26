@@ -1,8 +1,8 @@
-Summary:
+ ## Summary:
    Git Flow provides high-level repository operations following a
  branching model.
 
- Use case:
+ ## Use case:
  - Automate feature, release, and hotfix branch management
 
- Source: https://github.com/nvie/gitflow
+ **Source**: https://github.com/nvie/gitflow

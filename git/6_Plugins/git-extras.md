@@ -1,7 +1,7 @@
-Summary:
+ ## Summary:
    Adds many useful commands to Git, like summary, changelog, and release.
 
- Use case:
+ ## Use case:
  - Extend Git with productivity-focused commands
 
- Source: https://github.com/tj/git-extras
+ **Source**: https://github.com/tj/git-extras

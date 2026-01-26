@@ -1,8 +1,8 @@
-Summary:
+ ## Summary:
    Manages large files with Git without checking them directly into the
  repository.
 
- Use case:
+ ## Use case:
  - Version large datasets and binaries efficiently
 
- Source: https://git-annex.branchable.com/
+ **Source**: https://git-annex.branchable.com/

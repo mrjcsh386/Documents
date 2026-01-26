@@ -1,7 +1,7 @@
-Summary:
+ ## Summary:
    Provides transparent file encryption in a Git repository.
 
- Use case:
+ ## Use case:
  - Encrypt sensitive files in a shared repository
 
- Source: https://www.agwa.name/projects/git-crypt/
+ **Source**: https://www.agwa.name/projects/git-crypt/

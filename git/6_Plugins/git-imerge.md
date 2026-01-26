@@ -1,7 +1,7 @@
-Summary:
+ ## Summary:
    Incremental merge tool for reducing conflicts in long-lived branches.
 
- Use case:
+ ## Use case:
  - Simplify integration of large feature branches
 
- Source: https://github.com/mhagger/git-imerge
+ **Source**: https://github.com/mhagger/git-imerge

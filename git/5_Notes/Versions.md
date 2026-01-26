@@ -1,4 +1,4 @@
-Notable Releases:
+ ## Notable Releases:
 
  - 1.0 (2005-12-21)
    First official Git release; established distributed version control
@@ -11,4 +11,4 @@ Notable Releases:
  - 2.30 (2021-01-04)
    Added sparse-checkout v2, partial clone support, and improved performance.
 
-Sources: Git release notes and official documentation
+ **Sources**: Git release notes and official documentation

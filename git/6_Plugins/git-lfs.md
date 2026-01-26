@@ -1,8 +1,8 @@
-Summary:
+ ## Summary:
    Git Large File Storage replaces large files with text pointers in Git
  while storing the actual file content separately.
 
- Use case:
+ ## Use case:
  - Store large media files efficiently in Git repositories
 
- Source: https://git-lfs.github.com/
+ **Source**: https://git-lfs.github.com/
