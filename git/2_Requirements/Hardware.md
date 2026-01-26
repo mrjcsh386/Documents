@@ -3,4 +3,4 @@
    RAM: Minimum 256 MB; Recommended 1 GB
    Disk: Minimum 50 MB; Recommended 500 MB for active repositories
 
-   BIOS/UEFI: No special requirements
+#   BIOS/UEFI: No special requirements
