@@ -1,3 +1,0 @@
-To install 'git' on Alpine Linux, issue:
-
-     user@host:~$ sudo apk add git

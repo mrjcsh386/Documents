@@ -1,3 +1,0 @@
-To install 'git' on CentOS and variants, issue:
-
-     user@host:~$ sudo yum install git
