@@ -1,0 +1,66 @@
+ ## Summary:
+ This documentation walks through a basic Git workflow from observation to
+ publication.
+
+ It shows how `git status` is used first to inspect the working directory and
+ confirm that files are untracked. `git add .` then stages all files in the
+ current directory, marking them as intended for the next commit. `git commit`
+ creates a recorded checkpoint that includes a message and, implicitly, 
+ authorship and signing context. Finally, `git push -u origin main` sends that
+ commit to the configured remote repository and sets `origin/main` as the
+ upstream for future pushes.
+
+ The explanation emphasizes intent and order: files must be staged and commited
+ before they can be pushed, and pushes default to the branch pointed to by
+ `HEAD` unless another branch is specified. It also clarifies what `origin`
+ represents, which is a named reference to the repository you cloned from.
+
+ ## Example:
+ ```bash
+ user@host:~/My_repo$ git status
+ On branch main
+ Your branch is up to date with 'origin/main'.
+
+ Untracked files:
+ basic_functions.c
+ header.h
+ main.c
+
+ nothing added to commit but untracked files present ...
+ user@host:~$ git add .
+ user@host:~$ git commit --all -m "
+ On branch main
+ Changes to be committed:
+         new file: basic_functions.c
+         new file: header.h
+         new file: main.c"
+ # Make note of the double quote on the last line.
+ user@host:~$ git push -u origin main
+ Enter passphrase for key '/home/user/.ssh/id_ed25519':
+ ```
+ ## Explanation:
+   This workflow demonstrates the process of stating your
+ working directory, using 'status'. The user 'stages' the
+ files with the 'add' command. The '.' denotes 'here 
+ directory' You can use regex, file paths directly, or pass
+ the parent directory containing files you wish to be staged.
+ 'commit' is a checkpoint for annotaition as well as signing.
+ 'add' and 'commit' are base requirements to push to 
+ origin/<branch name>. If you don't denote a branch, it
+ defaults to the one your 'HEAD' is currently attached to.
+
+> Note: 'origin' is what is configured to be the source
+>   repository that you retreived a copy from. This can be
+>   file based using file://path/to/repo.git, or remote
+>   systems over http(s) and ssh protocals.
+
+> Cuation: If you use file based 'origin' to clone a repo,
+>   the permissions of the 'origin' will determine if you
+>   are effectively able to write to that repo. This means
+>   if you have write permissions, you can add your commit,
+>   or potentially clobber your repo of final truth. 
+>
+>   For remote repos over SSH, they can be file backed, or
+>   with a properly configured SSH server. If your needs
+>   require authentication, please review 03_Advanced.Self_\
+>   hosting_git_over_ssh.txt.
