@@ -1,12 +1,12 @@
  ## Summary:
-   Gits primary job is to maintain historical records of changes, and not to
- parse or understand intent or state. Due to that, Git will complain from time
- to time about merge conflicts, and there are a handful of methods that can
- satisfy what you need to do to resolve the issue.
+   Merge conflicts happen when Git cannot automatically combine changes.
+ Git's primary job is to maintain historical records of changes, not to
+ interpret intent or project state. When that happens, the options below
+ show practical ways to resolve a conflict.
 
  ## Example:
  ### Case A: You are in a merge conflict right now, and you want `branch_b`'s version to win for one file.
- From `branch_a` branch (or whilte the merge is pasued), do:
+ From the `branch_a` branch (or while the merge is paused), do:
  ```bash
  user@host:~$ git restore --source=branch_b -- path/to/workspace.json
  user@host:~$ git add path/to/workspace.json
@@ -15,19 +15,19 @@
  ```bash
  user@host:~$ git commit
  ```
- In addition to the above, you can go with the 'older' form:
+ In addition to the above, you can use the older form:
  ```bash
  user@host:~$ git checkout active -- path/to/workspace.json
  user@host:~$ git add path/to/workspace.json
  ```
- Those are the cleanest "overwrite this file with the other branch's version" move.
+ This is the cleanest way to overwrite the file with the other branch's version.
 
  ### Case B: You are in a merge conflict and you want "ours" or "theirs" (Git's built-in merge sides)
  During a conflict, Git offers shortcuts:
  ```bash
- # Keep `main`'s(or, the branch you're in) side:
+ # Keep `main`'s (or, the branch you're in) side:
  user@host:~$ git checkout --ours -- path/to/workspace.json
- # Keep `branch_b`'s(or, the other branch) side:
+ # Keep `branch_b`'s (or, the other branch) side:
  user@host:~$ git checkout --theirs -- path/to/workspace.json
 
  user@host:~$ git add path/to/workspace.json
@@ -38,18 +38,18 @@
 
  If you're not 100% sure, prefer the explicit source form in Case A.
 
- ### Case C: You explicitly want a patch file (diff) and apply it onto main.
+ ### Case C: You explicitly want a patch file (diff) and apply it to main.
  This is more fiddly, but doable.
  1. Make a patch for just the file, comparing `main..branch_b`:
  ```bash
  user@host:~$ git diff main..branch_b -- path/to/workspace.json > /tmp/ws.patch
  ```
- 2. Swtich to `main` (or stay there), and apply:
+ 2. Switch to `main` (or stay there), and apply:
  ```bash
  user@host:~$ git switch main
  user@host:~$ git apply /tmp/ws.patch
  user@host:~$ git add path/to/workspace.json
- git commit -m "Apply workspace.json changes from branch_b"
+ user@host:~$ git commit -m "Apply workspace.json changes from branch_b"
  ```
 > Notes:
 > - `git apply` does not create a commit; it just edits your working tree.
