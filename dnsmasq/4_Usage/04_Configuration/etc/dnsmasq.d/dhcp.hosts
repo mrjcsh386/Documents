@@ -1,0 +1,13 @@
+# /etc/dnsmasq.d/dhcp.hosts
+# Author: mrjcsh386@gmail.com
+# 5 February, 2026
+
+# This file contains static DHCP host mappings. Each line defines a predictable
+# identity for a known client.
+
+# These are example definitions and shouldn't reflect your actual environment.
+#52:54:00:12:34:56,server1,192.168.1.10
+#52:54:00:65:43:21,printer1,192.168.1.20
+
+# Static host mappings are evaluated before dynamic allocation and do not
+# consume addresses from the DHCP range.
